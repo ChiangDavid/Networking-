@@ -1,0 +1,38 @@
+#include <studio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+//Creates the sockets                                                          
+int ASocket;
+//IPv4protocols,Internetaddresses,connection-based service,protocol            
+ASocket = socket(AF_INET, SOCK_STREAM,0);
+if (ASocket <0)
+  printf("Failed creating socket\n");
+//Bind a socket to a port                                                      
+struct sockaddr_in addrs;
+// type of socket created in socket()                                          
+addrs.sin_family = AF_INET;
+addrs.sin_addr.s_addr = INADDR_ANY;
+// 12000 is the port to use for connections                                    
+addrs.sin_port = htons(12000);
+// bind the socket to the port specified above                                 
+bind(Asocket,(struct sockaddr *)&addrs,sizeof(addrs))
+//Listening for connection, wait for only 1 connection                         
+listen(ASocket,1);
+//Accept the connection from client                                            
+//value/result parameter                                                       
+int address;
+address = sizeof(struct sockaddr_in);
+//create new sockets for return the accept                                     
+new_socket = accept(socket_desc, (struct sockaddr *)&address, &addrlen);
+//return the error when return the accept is less than 0                       
+if (new_socket < 0)
+  printf("ERROR on accept");
+//set Buffer Size                                                              
+//The variables that for recv() function                                       
+int buffsize = 1024;
+//allocates the request memory into pointer buffer                             
+char *buffer=malloc(bufsize);
+//use the recv() function to receive from client                               
+recv(new_socket,buffer,bufsize,0);
