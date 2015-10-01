@@ -1,0 +1,6 @@
+For the launch:
+the function is to registers all event listener, and creates objects of any application class and instantiates a new objects for every new switch that connects to
+Parsing the packet and to match incoming packet
+Then sending messages to switch.
+Construct the appropriate message objet and populate it with the decision fields and the send to the switch using the connection object —> self.connection.send()
+Last step is to managing multiple applications which is spawning multiple application simultaneously.
